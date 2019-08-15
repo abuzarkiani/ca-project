@@ -18,6 +18,7 @@ jobs:
          root: . #the folder to start the workspace from.
          paths:
            - .
+           
  package:
    docker:
      - image: circleci/python:2.7
