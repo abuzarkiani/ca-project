@@ -19,7 +19,7 @@ jobs:
          paths:
            - .
 
-  dockerize:
+ dockerize:
     machine : true
   steps:
      - attach_workspace:
