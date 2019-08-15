@@ -1,21 +1,40 @@
-version : 2
 jobs:
-  build: # required for the runs that don't use workflows
-  working_directory: .
-  docker:
-      -image: circleci/python:2.7.6
-      steps:
-        - checkout
-        
-        - run:
-          command: | #use pipenv to install dependencies
-            sudo pip install pipenv
-            pipenv install
-            pipenv run python tests.py
-        
-        - store_test_results:
-            path: test-results
-        - store_artifacts:
-            path: test-results
-            destination: tr1
+ test:
+   docker:
+     - image: circleci/python:2.7
+   steps:
+     - checkout
+     - run:
+         name:
+         command: python tests.py
+     - store_test_results:
+         path:
+     - store_artifacts:
+         path:
+         destination:
+     - persist_to_workspace:
+         root: . #the folder to start the workspace from.
+         paths:
+           - .
+ package:
+   docker:
+     - image: circleci/
+   steps:
+     - attach_workspace:
+         at: .
+     # Login to docker
+     - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
+     # build the application image
+     - run: docker build -t $DOCKER_USER/myapp:$CIRCLE_SHA1 .
+     # deploy the image
+     - run: docker push $DOCKER_USER/myapp:$CIRCLE_SHA1
+
+workflows:
+ version: 2
+ two_job_flow:
+   jobs:
+     - test
+     - package:
+         requires:
+           - test
 
