@@ -9,6 +9,7 @@ jobs:
          command: |
           sudo pip install -r requirements.txt
           python tests.py
+          echo "Artificats.zip"
      - store_test_results:
          path: build/test-results
      - store_artifacts:
