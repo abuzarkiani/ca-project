@@ -11,6 +11,7 @@ jobs:
           python tests.py
           sudo apt-get install zip gzip tar
           zip -r project.zip .
+          pwd
      - store_test_results:
          path: build/test-results
      - store_artifacts:
