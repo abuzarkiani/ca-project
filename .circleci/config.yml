@@ -18,10 +18,10 @@ jobs:
          root: . #the folder to start the workspace from.
          paths:
            - .
- package:
-   dockerize:
-     machine : true
-   steps:
+
+  dockerize:
+    machine : true
+  steps:
      - attach_workspace:
          at: .
      # Login to docker
