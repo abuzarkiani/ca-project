@@ -18,8 +18,9 @@ jobs:
          root: . #the folder to start the workspace from.
          paths:
            - .
- dockerize:
-  machine : true
+ package:
+   docker:
+     - image: circleci/python:2.7
    steps:
      - attach_workspace:
          at: .
