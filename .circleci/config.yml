@@ -7,7 +7,7 @@ jobs:
      - run:
          name:
          command: |
-          pip install -r requirements.txt
+          sudo pip install -r requirements.txt
           python tests.py
      - store_test_results:
          path: build/test-results
