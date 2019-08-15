@@ -8,10 +8,10 @@ jobs:
          name:
          command: python tests.py
      - store_test_results:
-         path:
+         path: build/test-results
      - store_artifacts:
-         path:
-         destination:
+         path: build/libs
+         destination: prefix
      - persist_to_workspace:
          root: . #the folder to start the workspace from.
          paths:
