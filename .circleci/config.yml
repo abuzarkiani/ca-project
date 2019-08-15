@@ -11,10 +11,9 @@ jobs:
           python tests.py
           sudo apt-get install zip gzip tar
           zip -r project.zip .
-          pwd
-
+          
      - store_artifacts:
-         path: /home/circleci/project/project.zip
+         path: /home/circleci/project/
          destination: build
      - persist_to_workspace:
          root: . #the folder to start the workspace from.
