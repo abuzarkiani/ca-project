@@ -19,8 +19,8 @@ jobs:
          paths:
            - .
  package:
-   docker:
-     - image: circleci/python:2.7
+   dockerize:
+     machine : true
    steps:
      - attach_workspace:
          at: .
